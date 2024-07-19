@@ -12,7 +12,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
 
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y --no-install-recommends
+    apt install -y 
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
@@ -25,8 +25,18 @@ RUN apt install  -y cmake build-essential git
 RUN apt install  -y ninja-build
 RUN apt install  -y autoconf gnulib
 
-RUN apt install  -y python3 python3-venv python3-dev
+RUN apt install  -y ca-certificates curl gnupg
+RUN apt install  -y software-properties-common
+
+RUN apt install  -y python3 
+RUN apt install  -y python3-venv 
+RUN apt install  -y python3-dev
 RUN apt install  -y pkg-config python3-tk 
+
+#setup nodejs 
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
+  RUN apt update
+  RUN apt install -y nodejs
 
 #switch to user node
 USER builduser
