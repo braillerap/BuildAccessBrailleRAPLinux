@@ -31,7 +31,7 @@ RUN apt install  -y software-properties-common
 RUN apt install  -y python3 
 RUN apt install  -y python3-venv 
 RUN apt install  -y python3-dev
-RUN apt install  -y pkg-config python3-tk 
+RUN apt install  -y pkg-config python3-tk python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-webkit2-4.1
 
 #setup nodejs 
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
