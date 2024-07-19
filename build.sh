@@ -1,2 +1,2 @@
 ./gen_docker.sh
-./run_builddocker.sh fixnode
+./run_builddocker.sh main
