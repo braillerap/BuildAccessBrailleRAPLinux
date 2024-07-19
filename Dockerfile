@@ -25,6 +25,9 @@ RUN apt install  -y cmake build-essential git
 RUN apt install  -y ninja-build
 RUN apt install  -y autoconf gnulib
 
+RUN apt install  -y python3 python3-venv python3-dev
+RUN apt install  -y pkg-config python3-tk 
+
 #switch to user node
 USER builduser
 
