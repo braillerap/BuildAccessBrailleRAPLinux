@@ -35,7 +35,7 @@ printf "\e[0mBuild finished\n"
 #npm run buildview
 pyinstaller LinuxAccessBrailleRAP.spec
 
- if [ $(find /home/builduser/AccessBrailleRAP/build/ -name "*.js") ];
+ if [ $(find /home/builduser/AccessBrailleRAP/dist/ -name "AccessBrailleRAP-debian") ];
   then
     ls -la /home/builduser/AccessBrailleRAP/build/
     ls -la /home/builduser/AccessBrailleRAP/

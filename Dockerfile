@@ -28,10 +28,11 @@ RUN apt install  -y ca-certificates curl gnupg
 RUN apt install  -y software-properties-common
 RUN apt install  -y ubuntu-desktop-minimal 
 RUN apt install  -y python3 python3-venv python3-dev
-RUN apt install  -y pkg-config python3-tk python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-webkit2-4.1
+RUN apt install  -y pkg-config 
+RUN apt install  -y python3-tk python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-webkit2-4.1
 RUN apt install  -y xvfb
 RUN apt install  -y libcairo2 libcairo2-dev libgirepository1.0-dev
-
+RUN apt install  -y tcl
 
 #setup nodejs 
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
@@ -47,7 +48,7 @@ ARG NODE_ENV=development
 ENV NODE_ENV $NODE_ENV
 
 #switch to user node
-#USER builduser
+#USER builduser // user mode switch commented because of xvfb installation
 
 WORKDIR /home/builduser
 
