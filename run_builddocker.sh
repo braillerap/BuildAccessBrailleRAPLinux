@@ -10,4 +10,4 @@ if [ $# -gt 0 ]
   printf "Setting branch to:%s\n" "$BRANCH"
  fi
 
-docker run --rm -it --name accessbrap_build -e BRANCH_BUILD="$BRANCH" -v ./dist/:/home/builduser/dist  accessbrap_liux_build
+docker run --rm -it --name accessbrap_build -e BRANCH_BUILD="$BRANCH" -v ./dist/:/home/builduser/dist  accessbrap_linux_build

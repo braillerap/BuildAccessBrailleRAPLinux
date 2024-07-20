@@ -12,34 +12,42 @@ RUN DEBIAN_FRONTEND=noninteractive \
 
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y 
+    apt install -y --no-install-recommends
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 #add unprivileged user
 RUN addgroup --gid $GID builduser && \
   adduser --uid $UID --gid $GID --disabled-password --gecos "" builduser 
-
 #install tools
 RUN apt install  -y cmake build-essential git 
 RUN apt install  -y ninja-build
 RUN apt install  -y autoconf gnulib
-
+#RUN apt install  -y libyaml-dev texinfo texlive
 RUN apt install  -y ca-certificates curl gnupg
 RUN apt install  -y software-properties-common
-
-RUN apt install  -y python3 
-RUN apt install  -y python3-venv 
-RUN apt install  -y python3-dev
+RUN apt install  -y ubuntu-desktop-minimal 
+RUN apt install  -y python3 python3-venv python3-dev
 RUN apt install  -y pkg-config python3-tk python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-webkit2-4.1
+RUN apt install  -y xvfb
+RUN apt install  -y libcairo2 libcairo2-dev libgirepository1.0-dev
+
 
 #setup nodejs 
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
-  RUN apt update
-  RUN apt install -y nodejs
+RUN apt update
+RUN apt install -y nodejs
+#RUN apt install -y npm
+
+# install npm last version
+RUN npm i npm@latest -g
+
+# default to development environnement as this docker is only a BUILDER
+ARG NODE_ENV=development
+ENV NODE_ENV $NODE_ENV
 
 #switch to user node
-USER builduser
+#USER builduser
 
 WORKDIR /home/builduser
 
