@@ -52,7 +52,7 @@ ENV NODE_ENV $NODE_ENV
 
 WORKDIR /home/builduser
 
-COPY --chown=builduser:builduser build_accessbraillerap.sh /home/builduser/build_accessbraillerap.sh
+COPY --chown=builduser:builduser build_accessbraillerap2.sh /home/builduser/build_accessbraillerap2.sh
 
 RUN git clone --recursive https://github.com/braillerap/AccessBrailleRAP.git AccessBrailleRAP\
   && cd AccessBrailleRAP/ \
@@ -65,4 +65,4 @@ COPY --chown=builduser:builduser reqlinux.txt /home/builduser/AccessBrailleRAP/r
 
 WORKDIR /home/builduser/AccessBrailleRAP
 
-CMD ["bash", "/home/builduser/build_accessbraillerap.sh"]
+CMD ["bash", "/home/builduser/build_accessbraillerap2.sh"]
