@@ -1,5 +1,5 @@
-FROM ubuntu:24.04
-
+FROM ubuntu:24.04 
+RUN userdel -r ubuntu
 #user id and group id as input
 ARG UID 
 ARG GID
@@ -16,9 +16,7 @@ RUN apt update && \
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
-#add unprivileged user
-RUN addgroup --gid $GID builduser && \
-  adduser --uid $UID --gid $GID --disabled-password --gecos "" builduser 
+
 #install tools
 RUN apt install  -y cmake build-essential git 
 RUN apt install  -y ninja-build
@@ -34,6 +32,8 @@ RUN apt install  -y xvfb
 RUN apt install  -y libcairo2 libcairo2-dev libgirepository1.0-dev
 RUN apt install  -y tcl
 
+
+
 #setup nodejs 
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt update
@@ -46,6 +46,10 @@ RUN npm i npm@latest -g
 # default to development environnement as this docker is only a BUILDER
 ARG NODE_ENV=development
 ENV NODE_ENV $NODE_ENV
+
+#add unprivileged user
+RUN addgroup --gid $GID builduser && \
+  adduser --uid $UID --gid $GID --disabled-password --gecos "" builduser 
 
 #switch to user node
 #USER builduser // user mode switch commented because of xvfb installation

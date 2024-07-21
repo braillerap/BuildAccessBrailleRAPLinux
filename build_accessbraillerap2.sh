@@ -15,9 +15,13 @@ pip install PyQtWebEngine-Qt5
 pip install pyserial
 pip install pywebview
 pip install pyinstaller
+pip install pygi
+pip install pypandoc
 
+printf "##########################\n" 
 printf "install linux dependencies\n" 
-#pip install -r reqlinux.txt
+printf "##########################\n" 
+pip install -r reqlinux.txt
 
 
 printf "python :%s %s\n" $(python --version)
@@ -32,6 +36,8 @@ rm -r /home/builduser/dist/*
 
 printf "writing python linux dependencies\n" 
 pip freeze > /home/builduser/dist/requirement_test.txt
+
+git pull
 git checkout $BRANCH_BUILD 
 
 #printf "\e[1;34mBuild debug \e[0m\n"
