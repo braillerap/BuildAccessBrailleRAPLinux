@@ -5,30 +5,40 @@ export DISPLAY
 python3 -m venv venv
 source ./venv/bin/activate
 #pip install -r requirement.txt
-pip install tk
-pip install pyGobject
-pip install pycairo
-pip install QtPy
-pip install pyQt5
-pip install pyQtWebEngine
-pip install PyQtWebEngine-Qt5
-pip install pyserial
-pip install pywebview
-pip install pyinstaller
-pip install pygi
-pip install pypandoc
+# pip install tk
+# pip install pyGobject
+# pip install pycairo
+# pip install QtPy
+# pip install pyQt5
+# pip install pyQtWebEngine
+# pip install PyQtWebEngine-Qt5
+# pip install pyserial
+# pip install pywebview
+# pip install pyinstaller
+# pip install pygi
+# pip install pypandoc
+# pip install zipp
+# pip install typing_extensions
+# pip install pywin32-ctypes
+printf "\e[1;34m######################\e[0m\n"
+printf "\e[1;34minstall python dependencies\e[0m\n" 
+printf "\e[1;34m######################\e[0m\n"
+pip install -r /home/builduser/AccessBrailleRAP/requirement_linux.txt
 
-printf "##########################\n" 
-printf "install linux dependencies\n" 
-printf "##########################\n" 
-pip install -r reqlinux.txt
 
+#pip install -r reqlinux.txt
 
+printf "\e[1;34m######################\e[0m\n"
+printf "\e[1;34mplatform status\e[0m\n" 
+printf "\e[1;34m######################\e[0m\n"
 printf "python :%s %s\n" $(python --version)
 printf "nodejs :%s\n" $(node --version)
 printf "npm    :%s\n" $(npm --version)
 printf "branch :%s\n" "$BRANCH_BUILD"
 
+printf "\e[1;34m########################\e[0m\n"
+printf "\e[1;34minstall npm dependencies\e[0m\n" 
+printf "\e[1;34m########################\e[0m\n"
 
 npm install
 
@@ -42,7 +52,9 @@ git checkout $BRANCH_BUILD
 
 #printf "\e[1;34mBuild debug \e[0m\n"
 #npm run builddev
+printf "\e[1;34m######################\e[0m\n"
 printf "\e[1;34mBuild production ready\e[0m\n"
+printf "\e[1;34m######################\e[0m\n"
 npm run build
 printf "\e[0mBuild finished\n"
 

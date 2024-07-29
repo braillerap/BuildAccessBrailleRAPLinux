@@ -63,8 +63,8 @@ RUN git clone --recursive https://github.com/braillerap/AccessBrailleRAP.git Acc
   && git checkout main
 
 # exception
-COPY --chown=builduser:builduser LinuxAccessBrailleRAP.spec /home/builduser/AccessBrailleRAP/LinuxAccessBrailleRAP.spec
-COPY --chown=builduser:builduser reqlinux.txt /home/builduser/AccessBrailleRAP/reqlinux.txt
+#COPY --chown=builduser:builduser LinuxAccessBrailleRAP.spec /home/builduser/AccessBrailleRAP/LinuxAccessBrailleRAP.spec
+#COPY --chown=builduser:builduser reqlinux.txt /home/builduser/AccessBrailleRAP/reqlinux.txt
 #  && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
 
 WORKDIR /home/builduser/AccessBrailleRAP
