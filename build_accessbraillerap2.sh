@@ -55,18 +55,19 @@ git checkout $BRANCH_BUILD
 printf "\e[1;34m######################\e[0m\n"
 printf "\e[1;34mBuild production ready\e[0m\n"
 printf "\e[1;34m######################\e[0m\n"
-npm run build
+npm run buildubuntu
 printf "\e[0mBuild finished\n"
 
 #npm run buildview
-pyinstaller LinuxAccessBrailleRAP.spec
+#pyinstaller LinuxAccessBrailleRAP.spec
 
- if [ $(find /home/builduser/AccessBrailleRAP/dist/ -name "AccessBrailleRAP-ubuntu") ];
+ if [ $(find /home/builduser/AccessBrailleRAP/dist/ -name "accessbraillerap-ubuntu") ];
   then
     #ls -la /home/builduser/AccessBrailleRAP/build/
     #ls -la /home/builduser/AccessBrailleRAP/
     #ls -la /home/builduser/AccessBrailleRAP/dist/
     #cp -r /home/builduser/AccessBrailleRAP/build/* /home/builduser/dist/
+    md5sum /home/builduser/AccessBrailleRAP/dist/accessbraillerap-ubuntu.deb > /home/builduser/AccessBrailleRAP/dist/accessbraillerap-ubuntu.deb.md5sum
     cp -r /home/builduser/AccessBrailleRAP/dist/* /home/builduser/dist/
     printf "\e[0mCompilation: \e[1;32mSucceeded\n"
     printf "\n"
