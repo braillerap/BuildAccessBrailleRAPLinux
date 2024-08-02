@@ -69,6 +69,7 @@ printf "\e[0mBuild finished\n"
     #cp -r /home/builduser/AccessBrailleRAP/build/* /home/builduser/dist/
     md5sum /home/builduser/AccessBrailleRAP/dist/accessbraillerap-ubuntu.deb > /home/builduser/AccessBrailleRAP/dist/accessbraillerap-ubuntu.deb.md5sum
     cp -r /home/builduser/AccessBrailleRAP/dist/* /home/builduser/dist/
+    ls -lah /home/builduser/dist/*
     printf "\e[0mCompilation: \e[1;32mSucceeded\n"
     printf "\n"
     printf "####### #    # \n"
