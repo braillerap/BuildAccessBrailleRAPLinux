@@ -26,10 +26,10 @@ printf "branch :%s\n" "$BRANCH_BUILD"
 
 
 # !! delete .gitignore !!
-ls -lah /home/builduser/AccessBrailleRAP/package/ubuntu/accessbraillerap-ubuntu/bin/.*
-rm /home/builduser/AccessBrailleRAP/package/ubuntu/accessbraillerap-ubuntu/bin/.*
+#ls -lah /home/builduser/AccessBrailleRAP/package/ubuntu/accessbraillerap-ubuntu/bin/.*
+#rm /home/builduser/AccessBrailleRAP/package/ubuntu/accessbraillerap-ubuntu/bin/.*
 
-tree -L 4 ./package
+tree /home/builduser/AccessBrailleRAP/package
 
 printf "\e[1;34m########################\e[0m\n"
 printf "\e[1;34minstall npm dependencies\e[0m\n" 
@@ -41,8 +41,7 @@ rm -r /home/builduser/dist/*
 
 printf "writing python linux dependencies\n" 
 pip freeze > /home/builduser/dist/requirement_test.txt
-#printf "\e[1;34mBuild debug \e[0m\n"
-#npm run builddev
+
 printf "\e[1;34m######################\e[0m\n"
 printf "\e[1;34mBuild production ready\e[0m\n"
 printf "\e[1;34m######################\e[0m\n"
@@ -52,13 +51,13 @@ printf "\e[0mBuild finished\n"
 #npm run buildview
 #pyinstaller LinuxAccessBrailleRAP.spec
 
- if [ $(find /home/builduser/AccessBrailleRAP/dist/ -name "accessbraillerap-ubuntu") ];
+ if [ $(find /home/builduser/AccessBrailleRAP/dist/ -name "accessbraillerap-ubuntu-*.deb") ];
   then
-    #ls -la /home/builduser/AccessBrailleRAP/build/
-    #ls -la /home/builduser/AccessBrailleRAP/
-    #ls -la /home/builduser/AccessBrailleRAP/dist/
-    #cp -r /home/builduser/AccessBrailleRAP/build/* /home/builduser/dist/
-    md5sum /home/builduser/AccessBrailleRAP/dist/accessbraillerap-ubuntu.deb > /home/builduser/AccessBrailleRAP/dist/accessbraillerap-ubuntu.deb.md5sum
+    for f in /home/builduser/AccessBrailleRAP/dist/accessbraillerap-ubuntu-*.deb
+    do
+        md5sum $f > $f.md5sum
+        sed -i -r "s/ .*\/(.+)/  \1/g" $f.md5sum
+    done
     cp -r /home/builduser/AccessBrailleRAP/dist/* /home/builduser/dist/
     ls -lah /home/builduser/dist/*
     printf "\e[0mCompilation: \e[1;32mSucceeded\n"
